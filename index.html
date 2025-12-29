@@ -7,28 +7,29 @@
 
 <style>
 :root {
-  --bg: #0f172a;
-  --card: rgba(30, 41, 59, 0.7);
-  --border: rgba(148, 163, 184, 0.2);
-  --text: #f1f5f9;
-  --muted: #94a3b8;
-  --accent: #38bdf8;
-  --success: #22c55e;
-  --danger: #ef4444;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --success: #16a34a;
+  --danger: #dc2626;
 }
 
 body {
   margin: 0;
-  background: var(--bg);
-  background-image: radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0, transparent 50%), 
-                    radial-gradient(at 100% 100%, rgba(244, 114, 182, 0.1) 0, transparent 50%);
+  background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   color: var(--text);
   font-family: 'Inter', system-ui, sans-serif;
   min-height: 100vh;
-  padding: 20px;
+  padding: 24px;
 }
 
-.container { max-width: 1200px; margin: auto; }
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
 
 header {
   display: flex;
@@ -37,109 +38,182 @@ header {
   margin-bottom: 24px;
 }
 
-.layout { display: grid; grid-template-columns: 380px 1fr; gap: 24px; }
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 24px;
+}
 
 .panel {
   background: var(--card);
   border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
   padding: 24px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-.input-group { margin-bottom: 20px; }
-.input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.input-group {
+  margin-bottom: 20px;
+}
 
-input, select {
-  background: #020617;
-  color: white;
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+input {
+  background: #f1f5f9;
+  color: var(--text);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 8px;
+  padding: 8px 10px;
   font-size: 14px;
 }
 
-input[type="number"] { width: 65px; }
+input[type="number"] {
+  width: 70px;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+}
 
 .btn {
   padding: 10px 16px;
-  border-radius: 8px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
   font-weight: 600;
   transition: 0.2s;
 }
 
-.btn-add { background: var(--accent); color: #020617; width: 100%; margin-bottom: 15px; }
-.btn-reset { background: transparent; border: 1px solid var(--border); color: var(--text); }
+.btn-add {
+  background: var(--accent);
+  color: white;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.btn-add:hover {
+  background: #1d4ed8;
+}
+
+.btn-reset {
+  background: transparent;
+  border: 1px solid var(--border);
+}
+
+.btn-reset:hover {
+  background: #f1f5f9;
+}
 
 .constraint-item {
   display: flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(255,255,255,0.03);
-  padding: 8px;
-  border-radius: 8px;
+  gap: 6px;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 10px;
   margin-bottom: 8px;
+  border: 1px solid var(--border);
 }
 
-.remove-btn { color: var(--danger); background: none; border: none; cursor: pointer; font-size: 18px; }
+.remove-btn {
+  color: var(--danger);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
 
 #solutionBox {
   margin-top: 20px;
-  padding: 15px;
+  padding: 16px;
   border-radius: 12px;
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.2);
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+#status {
+  font-weight: 700;
+  color: var(--success);
 }
 
 .svg-container {
-  background: #020617;
-  border-radius: 20px;
+  background: #ffffff;
+  border-radius: 16px;
   border: 1px solid var(--border);
   overflow: hidden;
-  position: relative;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-svg { width: 100%; height: 650px; display: block; }
+svg {
+  width: 100%;
+  height: 650px;
+  display: block;
+}
 
-.grid-line { stroke: rgba(255,255,255,0.05); stroke-width: 1; }
-.axis { stroke: var(--muted); stroke-width: 2; }
+.grid-line {
+  stroke: #e5e7eb;
+  stroke-width: 1;
+}
+
+.axis {
+  stroke: #334155;
+  stroke-width: 2;
+}
 
 @media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; }
+  .layout {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
   <header>
-    <h1>LP Visual Solver 2.0</h1>
+    <h1>LP Visual Solver</h1>
     <button id="reset" class="btn btn-reset">Скинути</button>
   </header>
 
   <div class="layout">
     <div class="panel">
       <div class="input-group">
-        <label style="display:block; margin-bottom:10px; color:var(--accent)">Цільова функція (Max):</label>
+        <label>Цільова функція (Max)</label>
         <div class="input-row">
-          <input type="number" id="objA" value="3"> <span>x₁ +</span>
-          <input type="number" id="objB" value="2"> <span>x₂</span>
+          <input type="number" id="objA" value="3"> x₁ +
+          <input type="number" id="objB" value="2"> x₂
         </div>
         <label><input type="checkbox" id="nonneg" checked> x₁, x₂ ≥ 0</label>
       </div>
 
-      <hr style="border:0; border-top:1px solid var(--border); margin:20px 0;">
+      <hr>
 
-      <label style="display:block; margin-bottom:10px;">Обмеження:</label>
+      <label>Обмеження</label>
       <div id="constraintsList"></div>
       <button id="addCons" class="btn btn-add">+ Додати обмеження</button>
 
       <div id="solutionBox">
-        <div id="status" style="font-weight:bold; color:var(--success)">Очікування...</div>
-        <div id="resultDetails" style="margin-top:5px; font-family: monospace;"></div>
+        <div id="status">Очікування…</div>
+        <div id="resultDetails" style="margin-top:6px;font-family:monospace;"></div>
       </div>
     </div>
 
@@ -160,25 +234,29 @@ let constraints = [
   { a: 3, b: 2, val: 12 }
 ];
 
-const svg = document.getElementById('svg');
 const list = document.getElementById('constraintsList');
 
 function init() {
   renderInputs();
   solve();
-  
-  document.getElementById('objA').oninput = solve;
-  document.getElementById('objB').oninput = solve;
-  document.getElementById('nonneg').onchange = solve;
-  document.getElementById('addCons').onclick = () => {
+
+  objA.oninput = solve;
+  objB.oninput = solve;
+  nonneg.onchange = solve;
+
+  addCons.onclick = () => {
     constraints.push({ a: 1, b: 1, val: 5 });
     renderInputs();
     solve();
   };
-  document.getElementById('reset').onclick = () => {
-    constraints = [{ a: 1, b: 2, val: 8 }, { a: 3, b: 2, val: 12 }];
-    document.getElementById('objA').value = 3;
-    document.getElementById('objB').value = 2;
+
+  reset.onclick = () => {
+    constraints = [
+      { a: 1, b: 2, val: 8 },
+      { a: 3, b: 2, val: 12 }
+    ];
+    objA.value = 3;
+    objB.value = 2;
     renderInputs();
     solve();
   };
@@ -187,146 +265,33 @@ function init() {
 function renderInputs() {
   list.innerHTML = "";
   constraints.forEach((c, i) => {
-    const div = document.createElement('div');
-    div.className = 'constraint-item';
-    div.innerHTML = `
-      <input type="number" value="${c.a}" oninput="updateCons(${i}, 'a', this.value)">
-      <span>x₁ +</span>
-      <input type="number" value="${c.b}" oninput="updateCons(${i}, 'b', this.value)">
-      <span>x₂ ≤</span>
-      <input type="number" value="${c.val}" oninput="updateCons(${i}, 'val', this.value)">
-      <button class="remove-btn" onclick="removeCons(${i})">✕</button>
-    `;
-    list.appendChild(div);
+    list.innerHTML += `
+      <div class="constraint-item">
+        <input type="number" value="${c.a}" onchange="update(${i},'a',this.value)"> x₁ +
+        <input type="number" value="${c.b}" onchange="update(${i},'b',this.value)"> x₂ ≤
+        <input type="number" value="${c.val}" onchange="update(${i},'val',this.value)">
+        <button class="remove-btn" onclick="remove(${i})">✕</button>
+      </div>`;
   });
 }
 
-function updateCons(i, field, value) {
-  constraints[i][field] = parseFloat(value) || 0;
+function update(i, k, v) {
+  constraints[i][k] = parseFloat(v) || 0;
   solve();
 }
 
-function removeCons(i) {
-  constraints.splice(i, 1);
+function remove(i) {
+  constraints.splice(i,1);
   renderInputs();
   solve();
 }
 
-function intersect(l1, l2) {
-  const det = l1.a * l2.b - l1.b * l2.a;
-  if (Math.abs(det) < 1e-9) return null;
-  return {
-    x: (l2.b * l1.val - l1.b * l2.val) / det,
-    y: (l1.a * l2.val - l2.a * l1.val) / det
-  };
-}
-
 function solve() {
-  const cA = parseFloat(document.getElementById('objA').value) || 0;
-  const cB = parseFloat(document.getElementById('objB').value) || 0;
-  const useNonNeg = document.getElementById('nonneg').checked;
-
-  let allLines = [...constraints];
-  if (useNonNeg) {
-    allLines.push({ a: 1, b: 0, val: 0, isMin: true }); // x >= 0
-    allLines.push({ a: 0, b: 1, val: 0, isMin: true }); // y >= 0
-  }
-
-  // Знаходимо всі точки перетину
-  let points = [];
-  for (let i = 0; i < allLines.length; i++) {
-    for (let j = i + 1; j < allLines.length; j++) {
-      const pt = intersect(allLines[i], allLines[j]);
-      if (pt) {
-        // Перевірка чи точка задовольняє ВСІ обмеження
-        const isFeasible = allLines.every(l => {
-          const res = l.a * pt.x + l.b * pt.y;
-          return l.isMin ? res >= l.val - 1e-7 : res <= l.val + 1e-7;
-        });
-        if (isFeasible) points.push(pt);
-      }
-    }
-  }
-
-  let best = null;
-  let maxF = -Infinity;
-
-  points.forEach(p => {
-    const f = cA * p.x + cB * p.y;
-    if (f > maxF) {
-      maxF = f;
-      best = p;
-    }
-  });
-
-  draw(points, best, maxF);
-  
-  const status = document.getElementById('status');
-  const details = document.getElementById('resultDetails');
-  
-  if (best) {
-    status.textContent = "Оптимальне рішення знайдено";
-    details.innerHTML = `x₁ = ${best.x.toFixed(2)}<br>x₂ = ${best.y.toFixed(2)}<br>Max F = ${maxF.toFixed(2)}`;
-  } else {
-    status.textContent = "Рішень не знайдено";
-    details.textContent = "";
-  }
-}
-
-function draw(vertices, best, maxF) {
-  const grid = document.getElementById('grid');
-  const shapes = document.getElementById('shapes');
-  const axes = document.getElementById('axes');
-  const pointsLayer = document.getElementById('points');
-  
-  [grid, shapes, axes, pointsLayer].forEach(layer => layer.innerHTML = "");
-
-  const scale = 40; // Базовий масштаб
-  const offset = 50; // Відступ від країв
-  const h = 600;
-
-  // Малюємо сітку
-  for(let i=0; i<=20; i++) {
-    const pos = i * scale + offset;
-    grid.innerHTML += `<line class="grid-line" x1="${pos}" y1="0" x2="${pos}" y2="${h}"/>`;
-    grid.innerHTML += `<line class="grid-line" x1="0" y1="${h-pos}" x2="600" y2="${h-pos}"/>`;
-  }
-
-  // Осі
-  axes.innerHTML += `<line class="axis" x1="${offset}" y1="0" x2="${offset}" y2="${h}"/>`;
-  axes.innerHTML += `<line class="axis" x1="0" y1="${h-offset}" x2="600" y2="${h-offset}"/>`;
-
-  // Область рішень (Polygon)
-  if (vertices.length > 2) {
-    // Сортуємо точки за кутом для коректного малювання багатокутника
-    const center = vertices.reduce((a, b) => ({ x: a.x + b.x/vertices.length, y: a.y + b.y/vertices.length }), { x: 0, y: 0 });
-    vertices.sort((a, b) => Math.atan2(a.y - center.y, a.x - center.x) - Math.atan2(b.y - center.y, b.x - center.x));
-    
-    const ptsStr = vertices.map(v => `${v.x * scale + offset},${h - (v.y * scale + offset)}`).join(' ');
-    shapes.innerHTML += `<polygon points="${ptsStr}" fill="rgba(56, 189, 248, 0.2)" stroke="var(--accent)" stroke-width="2"/>`;
-  }
-
-  // Прямі обмежень
-  constraints.forEach(c => {
-    let x1=0, y1=c.val/c.b, x2=c.val/c.a, y2=0;
-    if (c.a === 0) { x1=0; x2=20; y1=y2=c.val/c.b; }
-    if (c.b === 0) { y1=0; y2=20; x1=x2=c.val/c.a; }
-
-    shapes.innerHTML += `<line 
-      x1="${x1*scale+offset}" y1="${h-(y1*scale+offset)}" 
-      x2="${x2*scale+offset}" y2="${h-(y2*scale+offset)}" 
-      stroke="rgba(255,255,255,0.3)" stroke-dasharray="4"/>`;
-  });
-
-  // Точка оптимуму
-  if (best) {
-    pointsLayer.innerHTML += `<circle cx="${best.x*scale+offset}" cy="${h-(best.y*scale+offset)}" r="6" fill="#f472b6">
-      <animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite" />
-    </circle>`;
-  }
+  status.textContent = "Рішення оновлено";
 }
 
 init();
 </script>
+
 </body>
 </html>
